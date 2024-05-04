@@ -1,13 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main(){
   runApp(const MyApp());
 }
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+ const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List names= ['Muhib','Suju','Mim','abu'];
 
   @override
   Widget build(BuildContext context) {
+
 
     return MaterialApp(
 
@@ -25,28 +35,11 @@ class MyApp extends StatelessWidget {
 
 
         ),
-        body: Center(
-          child: Container(
-            height: 300,
-            width: 300,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(20),
-          ),
-
-            padding: const EdgeInsets.all(25),
-           
-           // child:  const Text('Muhib',
-           // style: TextStyle(
-           //   color: Colors.white,
-           //   fontSize: 30,
-           //   fontWeight: FontWeight.bold,
-           // ),
-           // ),
-            child: const Icon(Icons.favorite, color: Colors.white,size: 64,),
-
-          ),
-        ),
+        body: ListView.builder(
+            itemCount:names.length,
+          itemBuilder:(context, int index) =>ListTile(
+            title: Text(names[index]),
+          )),
 
       ),
     );
